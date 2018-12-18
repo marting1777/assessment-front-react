@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Header from './containers/Header/Header';
+import GnomeContainer from './containers/GnomeContainer/GnomeContainer';
 
 
 class App extends Component {
@@ -9,12 +10,7 @@ class App extends Component {
             <div className={classes.App}>
                 <Header />
                 <main className={classes.MainContainer}>
-                    <div className={classes.Col4}>
-
-                    </div>
-                    <div className={classes.Col8}>
-                    
-                    </div>
+                    <GnomeContainer />
                 </main>
             </div>
         );
