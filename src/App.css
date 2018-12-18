@@ -1,1 +1,24 @@
+.MainContainer {
+    width: 98%;
+    display: block;
+    margin: 30px auto;
+}
 
+.Col4 {
+    width: 100%;
+}
+
+.Col8 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .Col4 {
+        width: 33.3333%;
+        float: left;
+    }
+    .Col8 {
+        width: 66.6666%;
+        float: left;
+    }
+}
