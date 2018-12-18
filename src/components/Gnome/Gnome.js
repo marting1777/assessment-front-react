@@ -3,7 +3,7 @@ import classes from './Gnome.css'
 
 const gnome = (props) => {
     return (
-        <li className={classes.Gnome}>{props.name}</li>
+        <li onClick={props.clicked} className={classes.Gnome}>{props.name}</li>
     )
 }
 

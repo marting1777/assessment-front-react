@@ -1,0 +1,37 @@
+.ImageGnome {
+    width: 100px;
+    border-radius: 100%;   
+}
+
+.MensajeSelect {
+    text-align: center;
+}
+
+.ListDetails li{
+    list-style: none;
+    padding: 10px 0px;
+}
+
+.GnomeDetailsBox {
+    box-shadow: 1px 1px 1px #505050;
+    padding: 15px;
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.ListProfessions, .ListFriends {
+    list-style: none;
+    padding: 10px 0px;
+}
+
+.Col_1_3 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .Col_1_3 {
+        width: 33.33333%;
+        float: left;
+    }
+}
