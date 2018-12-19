@@ -58,12 +58,6 @@ class GnomeContainer extends Component {
         })
         return (
             <section>
-                <div className={classes.Col4}>
-                    <Filter onTextChange={text => this.setState({filterString: text})}/>
-                    <ul>
-                        {gnomes}
-                    </ul>
-                </div>
                 <div className={classes.Col8}>
                     <FullGnome 
                         id={this.state.selectedGnomeId}
@@ -75,6 +69,12 @@ class GnomeContainer extends Component {
                         hairColor={this.state.selectedGnomeHair}
                         professions={this.state.selectedGnomeProfessions}
                         friends={this.state.selectedGnomeFriends}/>
+                </div>
+                <div className={classes.Col4}>
+                    <Filter onTextChange={text => this.setState({filterString: text})}/>
+                    <ul>
+                        {gnomes}
+                    </ul>
                 </div>
             </section>
         )

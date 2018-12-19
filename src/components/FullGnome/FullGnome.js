@@ -7,8 +7,10 @@ const fullGnome = (props) => {
         return (
             gnome = (
             <div className={classes.GnomeDetailsBox}>
-                <h1>{props.name}</h1>
-                <div className={classes.Col_1_3}>
+                <div className={classes.Col_1_4}>
+                    <h1>{props.name}</h1>
+                </div>
+                <div className={classes.Col_1_4}>
                     <img className={classes.ImageGnome} src={props.thumbnail} alt={props.name}/>
                     <ul className={classes.ListDetails}>
                         <li>Age: <strong>{props.age}</strong></li>
@@ -17,7 +19,7 @@ const fullGnome = (props) => {
                         <li>Hair Color: <strong style={{color: props.hairColor}}>{props.hairColor}</strong></li>
                     </ul>
                 </div>
-                <div className={classes.Col_1_3}>
+                <div className={classes.Col_1_4}>
                     <h3>Professions</h3>
                     <ul>
                     {props.professions.map(p => {
@@ -25,7 +27,7 @@ const fullGnome = (props) => {
                     })}
                     </ul>
                 </div>
-                <div className="Col-1-3">
+                <div className={classes.Col_1_4}>
                     <h3>Friends</h3>
                     <ul>
                     {props.friends.map(f => {
