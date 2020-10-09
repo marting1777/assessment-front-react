@@ -1,16 +1,13 @@
-import React, { Component } from 'react'
-import classes from './Header.css'
+import React from 'react';
+import classes from './Header.scss';
+import Title from '../../components/Title/Title';
 
-import Title from '../../components/Title/Title'
+const Header = () => {
+  return (
+    <header className={classes.Header}>
+      <Title alignment="center" color={'#fff'} text={'Brastlewark Town'} />
+    </header>
+  );
+};
 
-class Header extends Component {
-    render () {
-        return (
-            <header className={classes.Header}>
-                <Title />
-            </header>
-        )
-    }
-}
-
-export default Header
+export default Header;

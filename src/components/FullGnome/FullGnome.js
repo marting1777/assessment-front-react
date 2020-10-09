@@ -1,45 +1,101 @@
-import React from 'react'
-import classes from './FullGnome.css'
+import React from 'react';
+import classes from './FullGnome.scss';
+import Paper from '@material-ui/core/Paper';
+import Title from '../Title/Title';
 
-const fullGnome = (props) => {
-    let gnome
-    if (props.id || props.id === 0) {
-        return (
-            gnome = (
-            <div className={classes.GnomeDetailsBox}>
-                <div className={classes.Col_1_4}>
-                    <h1>{props.name}</h1>
-                </div>
-                <div className={classes.Col_1_4}>
-                    <img className={classes.ImageGnome} src={props.thumbnail} alt={props.name}/>
-                    <ul className={classes.ListDetails}>
-                        <li>Age: <strong>{props.age}</strong></li>
-                        <li>Weight: <strong>{props.weight.toFixed(2)}</strong></li>
-                        <li>Height: <strong>{props.height.toFixed(2)}</strong></li>
-                        <li>Hair Color: <strong style={{color: props.hairColor}}>{props.hairColor}</strong></li>
-                    </ul>
-                </div>
-                <div className={classes.Col_1_4}>
-                    <h3>Professions</h3>
-                    <ul>
-                    {props.professions.map(p => {
-                        return <li className={classes.ListProfessions}>{p}</li>
-                    })}
-                    </ul>
-                </div>
-                <div className={classes.Col_1_4}>
-                    <h3>Friends</h3>
-                    <ul>
-                    {props.friends.map(f => {
-                        return <li className={classes.ListFriends}>{f}</li>
-                    })}
-                    </ul>
-                </div>
-            </div>
-            )
-        )
-    }
-    return <p className={classes.MensajeSelect}>Select a Gnome to show it's details.</p>
-}
+const FullGnome = ({
+  id,
+  name,
+  thumbnail,
+  age,
+  weight,
+  height,
+  hairColor,
+  professions,
+  friends,
+  handleFriendClick,
+}) => {
+  let gnome = null;
+  if (id || id === 0) {
+    gnome = (
+      <Paper className={classes.FullGnomeContainer}>
+        <div className={classes.GnomeNameAndAvatar}>
+          <div
+            className={classes.GnomeAvatar}
+            style={{ backgroundImage: `url(${thumbnail})` }}
+          ></div>
+          <Title text={name} color="#000" alignment="left" />
+        </div>
+        <div className={classes.GnomeDetails}>
+          <div>
+            <ul className={classes.ListDetails}>
+              <li>
+                Age: <strong>{age}</strong>
+              </li>
+              <li>
+                Weight: <strong>{weight.toFixed(2)}</strong>
+              </li>
+              <li>
+                Height: <strong>{height.toFixed(2)}</strong>
+              </li>
+              <li>
+                Hair Color:{' '}
+                <strong style={{ color: hairColor }}>{hairColor}</strong>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>Professions</h3>
+            {professions.length > 0 ? (
+              <ul>
+                {professions.map((p) => {
+                  return (
+                    <li key={p} className={classes.ListProfessions}>
+                      {p}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p>{name} has no professions!</p>
+            )}
+          </div>
+          <div>
+            <h3>Friends</h3>
+            {friends.length > 0 ? (
+              <ul>
+                {friends.map((f, index) => {
+                  return (
+                    <li
+                      onClick={() => handleFriendClick(name, index)}
+                      key={f}
+                      className={classes.ListFriends}
+                    >
+                      {f}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p>{name} has no friends!</p>
+            )}
+          </div>
+        </div>
+      </Paper>
+    );
+  }
 
-export default fullGnome
+  return (
+    <>
+      {gnome ? (
+        gnome
+      ) : (
+        <p className={classes.MensajeSelect}>
+          Select a Gnome to show it's details.
+        </p>
+      )}
+    </>
+  );
+};
+
+export default FullGnome;

@@ -1,10 +1,15 @@
-import React from 'react'
-import classes from './Title.css'
+import React from 'react';
+import classes from './Title.scss';
 
-const title = (props) => {
-    return (
-        <h1 className={classes.Title}>Brastlewark Town</h1>
-    )
-}
+const Title = ({ text, color, alignment }) => {
+  return (
+    <h1
+      className={classes.Title}
+      style={{ color: `${color}`, textAlign: `${alignment}` }}
+    >
+      {text}
+    </h1>
+  );
+};
 
-export default title
+export default Title;

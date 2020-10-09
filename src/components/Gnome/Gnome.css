@@ -1,9 +1,0 @@
-.Gnome {
-    list-style: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.Gnome:hover {
-    box-shadow: 1px 1px 1px #505050;
-}

@@ -1,14 +1,17 @@
-import React, { Component } from 'react'
-import classes from './Filter.css'
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
-class Filter extends Component {
-    render () {
-        return (
-            <label>
-                <input className={classes.Filter} type="text" placeholder="Search..." onKeyUp={event => this.props.onTextChange(event.target.value)}/>
-            </label>
-        )
-    }
-}
+const Filter = ({ onTextChange, value }) => {
+  return (
+    <TextField
+      onChange={(event) => onTextChange(event.target.value)}
+      value={value}
+      id="outlined-search"
+      label="Search..."
+      type="search"
+      variant="outlined"
+    />
+  );
+};
 
-export default Filter
+export default Filter;

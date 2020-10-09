@@ -1,10 +1,13 @@
-import React from 'react'
-import classes from './Gnome.css'
+import React from 'react';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-const gnome = (props) => {
-    return (
-        <li onClick={props.clicked} className={classes.Gnome}>{props.name}</li>
-    )
-}
+const Gnome = ({ clicked, name }) => {
+  return (
+    <ListItem button onClick={clicked}>
+      <ListItemText primary={name} />
+    </ListItem>
+  );
+};
 
-export default gnome
+export default Gnome;
