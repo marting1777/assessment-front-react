@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import classes from './Gnomes.scss';
 import { connect } from 'react-redux';
 import List from '@material-ui/core/List';
@@ -147,6 +148,12 @@ const Gnomes = ({ loading, gnomes, onInitGnomes }) => {
       )}
     </Grid>
   );
+};
+
+Gnomes.propTypes = {
+  loading: PropTypes.bool,
+  gnomes: PropTypes.array,
+  onInitGnomes: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {

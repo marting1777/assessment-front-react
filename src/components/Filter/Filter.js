@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
 const Filter = ({ onTextChange, value }) => {
@@ -12,6 +13,11 @@ const Filter = ({ onTextChange, value }) => {
       variant="outlined"
     />
   );
+};
+
+Filter.propTypes = {
+  onTextChange: PropTypes.func,
+  value: PropTypes.string,
 };
 
 export default Filter;

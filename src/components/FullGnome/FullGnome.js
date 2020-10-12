@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './FullGnome.scss';
 import Paper from '@material-ui/core/Paper';
 import Title from '../Title/Title';
@@ -96,6 +97,19 @@ const FullGnome = ({
       )}
     </>
   );
+};
+
+FullGnome.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  thumbnail: PropTypes.string,
+  age: PropTypes.number,
+  weight: PropTypes.number,
+  height: PropTypes.number,
+  hairColor: PropTypes.string,
+  professions: PropTypes.array,
+  friends: PropTypes.array,
+  handleFriendClick: PropTypes.func,
 };
 
 export default FullGnome;
