@@ -2,3 +2,12 @@
   display: block;
   margin: 20px auto;
 }
+
+.PaginationActions {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-right: 15px;
+  }
+}

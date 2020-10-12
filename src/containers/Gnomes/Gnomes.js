@@ -111,17 +111,19 @@ const Gnomes = ({ loading, gnomes, onInitGnomes }) => {
             <Filter value={value} onTextChange={handleSearch} />
             <List component="nav" aria-label="secondary mailbox folders">
               {gnomesList}
-              <Button
-                variant="contained"
-                onClick={handleLessGnomes}
-                disabled={disabled}
-              >
-                Back 10
-              </Button>
-              <Button variant="contained" onClick={handleMoreGnomes}>
-                Next 10
-              </Button>
-              <p>{`${numberOfGnomes} of ${gnomes.length}`}</p>
+              <div className={classes.PaginationActions}>
+                <Button
+                  variant="contained"
+                  onClick={handleLessGnomes}
+                  disabled={disabled}
+                >
+                  Back 10
+                </Button>
+                <Button variant="contained" onClick={handleMoreGnomes}>
+                  Next 10
+                </Button>
+                <p>{`${numberOfGnomes} of ${gnomes.length}`}</p>
+              </div>
             </List>
           </Grid>
           <Grid item xs={12} sm={8}>
