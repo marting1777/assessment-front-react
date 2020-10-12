@@ -11,7 +11,7 @@ import Filter from '../../components/Filter/Filter';
 import FullGnome from '../../components/FullGnome/FullGnome';
 import { initGnomes } from '../../store/actions/gnomesActions';
 
-const Gnomes = ({ loading, gnomes, onInitGnomes }) => {
+const Gnomes = ({ loading, error, gnomes, onInitGnomes }) => {
   const [filterString, setFilterString] = useState('');
   const [gnomeEntity, setGnomeEntity] = useState({});
   const [numberOfGnomes, setNumberOfGnomes] = useState(10);
@@ -104,51 +104,56 @@ const Gnomes = ({ loading, gnomes, onInitGnomes }) => {
   };
 
   return (
-    <Grid container>
-      {!loading ? (
-        <>
-          <Grid item xs={12} sm={4}>
-            <Filter value={value} onTextChange={handleSearch} />
-            <List component="nav" aria-label="secondary mailbox folders">
-              {gnomesList}
-              <div className={classes.PaginationActions}>
-                <Button
-                  variant="contained"
-                  onClick={handleLessGnomes}
-                  disabled={disabled}
-                >
-                  Back 10
-                </Button>
-                <Button variant="contained" onClick={handleMoreGnomes}>
-                  Next 10
-                </Button>
-                <p>{`${numberOfGnomes} of ${gnomes.length}`}</p>
-              </div>
-            </List>
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <FullGnome
-              id={gnomeEntity.selectedGnomeId}
-              name={gnomeEntity.selectedGnomeName}
-              thumbnail={gnomeEntity.selectedGnomeImg}
-              age={gnomeEntity.selectedGnomeAge}
-              weight={gnomeEntity.selectedGnomeWeight}
-              height={gnomeEntity.selectedGnomeHeight}
-              hairColor={gnomeEntity.selectedGnomeHair}
-              professions={gnomeEntity.selectedGnomeProfessions}
-              friends={gnomeEntity.selectedGnomeFriends}
-              handleFriendClick={(name, index) =>
-                handleClick(gnomeEntity.selectedGnomeFriends, index)
-              }
-            />
-          </Grid>
-        </>
-      ) : (
-        <div className={classes.LoaderPosition}>
-          <BounceLoader size={50} color={'#417505'} loading={loading} />
-        </div>
+    <>
+      <Grid container>
+        {!loading && !error ? (
+          <>
+            <Grid item xs={12} sm={4}>
+              <Filter value={value} onTextChange={handleSearch} />
+              <List component="nav" aria-label="secondary mailbox folders">
+                {gnomesList}
+                <div className={classes.PaginationActions}>
+                  <Button
+                    variant="contained"
+                    onClick={handleLessGnomes}
+                    disabled={disabled}
+                  >
+                    Back 10
+                  </Button>
+                  <Button variant="contained" onClick={handleMoreGnomes}>
+                    Next 10
+                  </Button>
+                  <p>{`${numberOfGnomes} of ${gnomes.length}`}</p>
+                </div>
+              </List>
+            </Grid>
+            <Grid item xs={12} sm={8}>
+              <FullGnome
+                id={gnomeEntity.selectedGnomeId}
+                name={gnomeEntity.selectedGnomeName}
+                thumbnail={gnomeEntity.selectedGnomeImg}
+                age={gnomeEntity.selectedGnomeAge}
+                weight={gnomeEntity.selectedGnomeWeight}
+                height={gnomeEntity.selectedGnomeHeight}
+                hairColor={gnomeEntity.selectedGnomeHair}
+                professions={gnomeEntity.selectedGnomeProfessions}
+                friends={gnomeEntity.selectedGnomeFriends}
+                handleFriendClick={(name, index) =>
+                  handleClick(gnomeEntity.selectedGnomeFriends, index)
+                }
+              />
+            </Grid>
+          </>
+        ) : (
+          <div className={classes.LoaderPosition}>
+            <BounceLoader size={50} color={'#417505'} loading={loading} />
+          </div>
+        )}
+      </Grid>
+      {error && (
+        <p style={{ textAlign: 'center', color: 'red' }}>{error.message}</p>
       )}
-    </Grid>
+    </>
   );
 };
 
@@ -162,6 +167,7 @@ const mapStateToProps = (state) => {
   return {
     gnomes: state.gnomes.gnomes,
     loading: state.gnomes.loading,
+    error: state.gnomes.error,
   };
 };
 
